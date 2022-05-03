@@ -14,7 +14,7 @@ RUN adduser --disabled-password \
 
 # prepare data
 WORKDIR ${HOME}
-COPY AMGeO-Notebook.ipynb
+COPY AMGeO-Notebook.ipynb .
 COPY amgeo_out/ amgeo_out/
 
 # give user permissions to files in HOME
