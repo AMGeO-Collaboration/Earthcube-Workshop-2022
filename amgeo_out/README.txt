@@ -1,0 +1,1 @@
+This is a directory to store pre-loaded AMGeO data for the workshop
