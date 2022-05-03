@@ -5,7 +5,7 @@ for the AMGeO-Earthcube 2022 Workshop
 
 ## Running AMGeO in Binder
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AMGeO-Collaboration/Earthcube-Workshop-2022/main?labpath=AMGeO-Notebook.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AMGeO-Collaboration/Earthcube-Workshop-2022/HEAD)
 
 If you do not want to run AMGeO locally, you can click the above link to open up a notebook env with AMGeO already setup!
 
