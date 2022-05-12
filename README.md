@@ -3,6 +3,28 @@
 Welcome! This repository contains various ways of being able to run AMGeO 
 for the AMGeO-Earthcube 2022 Workshop
 
+<mark>NOTE:</mark> If you want to generate AMGeO Maps, it is highly recommended to run AMGeO using Docker/VSCode Dev Container
+
+There are 3 exercises for those that don't have something they would like to work on for the workshop:
+
+- Exercise 1: Basic plotting/data manipulation
+- Exercise 2: Basic plotting and intermediate data manipulation
+- Exercise 3: Intermediate/advanced plotting and advanced data manipulation
+
+There are an array of dates that we have prerun, so you can load on without any generation neeeded.
+
+- 2011-09-26
+- 2015-03-17
+- 2017-09-07
+- 2017-09-08
+- 2017-09-09
+
+We have also added some helpful util functions you can use if you want in `util.py`. You can import these into a notebook using
+
+```python
+from util import ...
+```
+
 ## Running AMGeO in Binder
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AMGeO-Collaboration/Earthcube-Workshop-2022/HEAD)
