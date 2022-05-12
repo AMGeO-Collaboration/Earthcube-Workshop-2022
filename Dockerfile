@@ -15,6 +15,10 @@ RUN adduser --disabled-password \
 # prepare data
 WORKDIR ${HOME}
 COPY AMGeO-Notebook.ipynb .
+COPY Exercise-1.ipynb .
+COPY Exercise-2.ipynb .
+COPY Exercise-3.ipynb .
+COPY util.py .
 COPY amgeo_out/ amgeo_out/
 
 # give user permissions to files in HOME
