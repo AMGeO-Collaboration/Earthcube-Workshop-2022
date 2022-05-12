@@ -72,3 +72,47 @@ def get_amgeo_geodetic_coords(amgeo_lat, amgeo_lon, dt: datetime):
     apex_out = Apex()
     geo_lat, geo_lon = apex_out.convert(amgeo_lats, mlt, 'mlt', 'geo', datetime=dt, height=110)
     return geo_lat, geo_lon
+
+def polar2dial(ax):
+    """
+    Turns a matplotlib axes polar plot into a dial plot
+    """
+    #Rotate the plot so that noon is at the top and midnight
+    #is at the bottom, and fix the labels so radial direction
+    #is latitude and azimuthal direction is local time in hours
+    ax.set_theta_zero_location('S')
+    theta_label_values = np.array([0.,3.,6.,9.,12.,15.,18.,21.])*180./12
+    theta_labels = ['%d' % (int(th/180.*12)) for th in theta_label_values.flatten().tolist()]
+    ax.set_thetagrids(theta_label_values,labels=theta_labels)
+
+    r_label_values = 90.-np.array([80.,70.,60.,50.,40.])
+    r_labels = [r'$%d^{o}$' % (int(90.-rv)) for rv in r_label_values.flatten().tolist()]
+    ax.set_rgrids(r_label_values,labels=r_labels)
+    ax.set_rlim([0.,40.])
+    
+def plot_epot_map(fig, lats, lons, epot):
+    """
+    Plots basic AMGeO Electric potential map on a dial plot
+
+    Ex:
+        fig = plt.figure(figsize=(4, 4))
+        epot = ds['epot'][idx]
+        dt = epot.time.values
+        ax = plot_epot_map(fig, epot.lat, epot.lon, epot)
+    """
+    ax = fig.add_subplot(111, projection='polar')
+    polar2dial(ax)
+    
+    # plotting
+    r = 90.-lats
+    th = np.radians(lons)
+    v = 30000
+    levels=np.linspace(-v,v,30)
+    cb = ax.contourf(th,r,epot,levels=levels,cmap='RdBu_r', vmin=-v, vmax=v,extend='both')
+    
+    # metadata attributes accessible on a DataArray
+    units = epot.attrs['units']
+    description = epot.attrs['longname']
+    
+    fig.colorbar(cb,label=f'{description} [{units}]')
+    return ax
